@@ -1,4 +1,4 @@
-# 輔仁大學資訊系統應用暨人機互動開發團隊  
+# 💻輔仁大學資訊系統應用暨人機互動開發團隊  
 ### Fu Jen InfoSys & HCI Development Lab (FJHCI Lab)
 
 ---
