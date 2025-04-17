@@ -1,0 +1,177 @@
+{% extends 'index/base.html' %}
+{% load static %}
+
+{% block title %}輔仁大學美食餐廳整合系統 - 首頁{% endblock %}
+
+{% block content %}
+<section class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="container h-100">
+        <div class="row h-100 align-items-center">
+            <div class="col-lg-8 text-white">
+                <h1 class="display-3 fw-bold">輔仁大學美食餐廳整合系統</h1>
+                <p class="lead">探索校園內外的餐廳，整合輔大人覓食好去處，建立個人專屬的美食路線！</p>
+                <div class="mt-4">
+                    <a href="#explore" class="btn btn-primary btn-lg me-2">開始探索</a>
+                    <a href="#" class="btn btn-outline-light btn-lg">推薦美食</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 分類 -->
+<section class="py-5" id="explore">
+    <div class="container">
+        <h2 class="text-center mb-5">美食分類</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="category-card">
+                    <div class="card h-100 shadow-sm">
+                        <img src="{% static 'index/images/campus-food.jpg' %}" class="card-img-top" alt="校內美食">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">校內美食</h5>
+                            <p class="card-text">探索輔大校內的各種美食選擇，從學生餐廳到小吃攤販。</p>
+                            <a href="#" class="btn btn-primary">查看更多</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="category-card">
+                    <div class="card h-100 shadow-sm">
+                        <img src="{% static 'index/images/nearby-food.jpg' %}" class="card-img-top" alt="校外美食">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">校外美食</h5>
+                            <p class="card-text">發現輔大周邊的美食天地，從傳統小吃到異國料理。</p>
+                            <a href="#" class="btn btn-primary">查看更多</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="category-card">
+                    <div class="card h-100 shadow-sm">
+                        <img src="{% static 'index/images/popular-food.jpg' %}" class="card-img-top" alt="人氣排行">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">人氣排行</h5>
+                            <p class="card-text">查看輔大學生最愛的美食排行榜，不容錯過的美食推薦。</p>
+                            <a href="#" class="btn btn-primary">查看更多</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 推薦美食 -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>本週推薦</h2>
+            <a href="#" class="btn btn-outline-primary">查看全部</a>
+        </div>
+        <div class="row g-4">
+            {% for i in "12345" %}
+            <div class="col-md-6 col-lg-4">
+                <div class="card food-card h-100">
+                    <div class="position-relative">
+                        <img src="{% static 'index/images/food-'|add:forloop.counter|add:'.jpg' %}" class="card-img-top" alt="美食圖片">
+                        <span class="badge bg-danger position-absolute top-0 end-0 m-2">熱門</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h5 class="card-title mb-0">美食名稱 {{ forloop.counter }}</h5>
+                            <div class="rating">
+                                {% for j in "12345" %}
+                                <i class="fas fa-star {% if forloop.counter <= 4 %}text-warning{% else %}text-muted{% endif %}"></i>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <p class="card-text text-muted small mb-2">
+                            <i class="fas fa-map-marker-alt me-1"></i> 
+                            {% if forloop.counter <= 2 %}
+                            輔大校內 - 學生餐廳
+                            {% else %}
+                            輔大周邊 - 約 {{ forloop.counter }}00 公尺
+                            {% endif %}
+                        </p>
+                        <p class="card-text">這是一段關於這家美食店的簡短描述，介紹其特色菜品和風味特點。</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="price">NT$ {{ forloop.counter }}0 ~ {{ forloop.counter }}{{ forloop.counter }}0</span>
+                            <a href="#" class="btn btn-sm btn-primary">查看詳情</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- 最新餐廳討論 -->
+<section class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">最新餐廳討論</h2>
+        <div class="row g-4">
+            {% for i in "123" %}
+            <div class="col-md-4">
+                <div class="card review-card h-100">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="{% static 'index/images/user-'|add:forloop.counter|add:'.jpg' %}" class="rounded-circle me-3" width="50" height="50" alt="用戶頭像">
+                            <div>
+                                <h6 class="mb-0">用戶名稱 {{ forloop.counter }}</h6>
+                                <div class="rating small">
+                                    {% for j in "12345" %}
+                                    <i class="fas fa-star {% if forloop.counter <= 5|add:'-1'|add:forloop.parentloop.counter %}text-warning{% else %}text-muted{% endif %}"></i>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <small class="text-muted ms-auto">{{ forloop.counter }} 天前</small>
+                        </div>
+                        <h6 class="card-subtitle mb-2">餐廳名稱 {{ forloop.counter }}</h6>
+                        <p class="card-text">command。</p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <div>
+                                <span class="badge bg-primary me-1">標籤1</span>
+                                <span class="badge bg-success">標籤2</span>
+                            </div>
+                            <button class="btn btn-sm btn-outline-primary">
+                                <i class="far fa-thumbs-up me-1"></i> {{ forloop.counter }}{{ forloop.counter }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-center mt-4">
+            <a href="#" class="btn btn-outline-primary">查看更多評論</a>
+        </div>
+    </div>
+</section>
+
+<!-- 訂閱區塊 -->
+<section class="py-5 bg-primary text-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h2>訂閱餐廳整合系統</h2>                  {% comment %} 訂閱區塊要寫功能 {% endcomment %}   
+                <p>獲取輔大周邊的餐廳最新資訊、新店資訊，以及每週人氣排行！</p>
+            </div>
+            <div class="col-lg-6">
+                <form class="row g-3">
+                    <div class="col-md-8">
+                        <input type="email" class="form-control form-control-lg" placeholder="請輸入您的電子郵件">
+                    </div>
+                    <div class="col-md-4">
+                        <button type="submit" class="btn btn-light btn-lg w-100">訂閱</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

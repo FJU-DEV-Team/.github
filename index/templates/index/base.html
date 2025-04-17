@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}輔仁大學美食餐廳整合系統{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'index/css/style.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- 導航欄 -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'index:home' %}">
+                <i class="fas fa-map-marked-alt me-2"></i>輔仁大學美食餐廳整合系統
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'index:home' %}">首頁</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">校內美食</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">校外美食</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">人氣排行</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">關於我們</a>
+                    </li>
+                </ul>
+                <form class="d-flex ms-3">
+                    <input class="form-control me-2" type="search" placeholder="搜尋美食...">
+                    <button class="btn btn-light" type="submit"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要內容 -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- 頁腳 -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>輔仁大學美食餐廳整合系統</h5>
+                    <p>為輔大師生、教職員、校友提供最全面的校園美食指南</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>聯絡我們</h5>
+                    <p><i class="fas fa-envelope me-2"></i> foodmap@fju.edu.tw</p>
+                    <p><i class="fas fa-phone me-2"></i> (02) 2905-xxxx</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>關注我們</h5>
+                    <div class="social-icons">
+                        {% comment %} <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a> {% endcomment %}
+                        {% comment %} <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a> {% endcomment %}
+                        <a href="https://github.com/ISHCIL" class="text-white"><i class="<i fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p>&copy; {% now "Y" %} 輔仁大學資訊系統應用暨人機互動開發團隊(Fu Jen InfoSys & HCI Development)  版權所有</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'index/js/main.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>
